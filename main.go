@@ -1,7 +1,8 @@
 package main
 
 import (
-	"io"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"log"
 	"net/http"
 )
@@ -19,16 +20,31 @@ import (
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
 
 // @host      localhost:8080
-// @BasePath  /api/v1
+// @BasePath  /
 
 // @securityDefinitions.basic  BasicAuth
 
 // @externalDocs.description  OpenAPI
 // @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
-	http.HandleFunc("/hello", helloHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+
+	r.Get("/", Hello)
+	log.Fatal(http.ListenAndServe(":8080", r))
+}
+
+// Hello godoc
+// @Summary      List accounts
+// @Description  get accounts
+// @Tags         accounts
+// @Accept       json
+// @Produce      json
+// @Param        q    query     string  false  "name search by q"  Format(email)
+// @Failure      400
+// @Failure      404
+// @Failure      500
+// @Router       / [get]
+func Hello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("welcome"))
 }
