@@ -2,4 +2,4 @@
 
 ## Swagger https://github.com/swaggo/swag
 
-### [swagger-ui](./docs/swagger.json)
+### [swagger-ui](./swagger.json)
