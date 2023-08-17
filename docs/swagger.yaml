@@ -1,4 +1,6 @@
 info:
+  title: Test
+  version: 0.0.1
   contact: {}
 paths: {}
 swagger: "2.0"
