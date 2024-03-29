@@ -1,0 +1,4 @@
+map, slice (nanoseconds)
+125,  167
+334,  416
+333,  125
