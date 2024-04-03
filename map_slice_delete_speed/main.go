@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-const maxRange = 1_000_0
+const maxRange = 1_0
 
 func main() {
 	wg := sync.WaitGroup{}
